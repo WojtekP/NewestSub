@@ -19,7 +19,7 @@ public class TestingMain {
         if(calculator.add(5,7) == (5+7)){
             System.out.println("adding test is ok");
         } else {
-            System.out.println("adding error");
+            System.out.println("Adding error");
         }
         System.out.println("Substracting test...");
         if(calculator.substract(3,2) == (3-2)){
