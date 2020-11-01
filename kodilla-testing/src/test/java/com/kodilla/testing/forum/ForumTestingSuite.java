@@ -48,4 +48,6 @@ class ForumTestSuite {
         Assertions.assertEquals(expectedResult, result);
 
     }
+
+
 }
