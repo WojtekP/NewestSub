@@ -12,6 +12,8 @@ public class BookLibrary {
     private List<Book> borrowed = new ArrayList<>();
     private Map<LibraryUser,List<Book>> books = new HashMap<>();
     private List<Book> addedBooks = new ArrayList<>();
+    private List<Book> cloneBooks = new ArrayList<>();
+
 
     public  BookLibrary(LibraryDatabase libraryDatabase){
         this.libraryDatabase = libraryDatabase;
@@ -34,11 +36,18 @@ public class BookLibrary {
         }
         return answer;
 
+
+    }
+    public void addBookToOrder(Book book){
+        addedBooks.add(book);
     }
     boolean rentABook(LibraryUser libraryUser, Book book){
 
-        addedBooks.add(book);
-        books.put(libraryUser,addedBooks);
+
+
+
+
         return true;
-    };
+    }
+
 }

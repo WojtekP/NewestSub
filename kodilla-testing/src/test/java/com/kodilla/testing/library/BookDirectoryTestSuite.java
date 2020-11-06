@@ -123,24 +123,45 @@ public class BookDirectoryTestSuite {
         void  test1BookRented(){
             //Given
             BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
-            LibraryUser libraryUser = new LibraryUser();
-            List<Book> resultListOfBooks = new ArrayList<>();
+            LibraryUser libraryUser1Book = new LibraryUser();
+            LibraryUser libraryUser5Book = new LibraryUser();
+            List<Book> resultListOf1Books = new ArrayList<>();
+            List<Book> resultListOf5Books = new ArrayList<>();
             Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
             Book book2 = new Book("Secretaries and Directors", "Dilbert Michigan", 2012);
             Book book3 = new Book("Secret life of programmers", "Steve Wolkowitz", 2016);
             Book book4 = new Book("Secrets of Java", "Ian Tenewitch", 2010);
             Book book5 = new Book("Secrets of Coding", "Ian Tas", 2002);
-            resultListOfBooks.add(book1);
-            resultListOfBooks.add(book2);
-            resultListOfBooks.add(book3);
-            resultListOfBooks.add(book4);
-            resultListOfBooks.add(book5);
-            bookLibrary.rentABook(libraryUser,book1);
+            resultListOf1Books.add(book1);
+            resultListOf5Books.add(book1);
+            resultListOf5Books.add(book2);
+            resultListOf5Books.add(book3);
+            resultListOf5Books.add(book4);
+            resultListOf5Books.add(book5);
+            bookLibrary.addBookToOrder(book1);
+            bookLibrary.rentABook(libraryUser1Book,book1);
+            bookLibrary.addBookToOrder(book1);
+            bookLibrary.addBookToOrder(book2);
+            bookLibrary.addBookToOrder(book3);
+            bookLibrary.addBookToOrder(book4);
+            bookLibrary.addBookToOrder(book5);
+            bookLibrary.rentABook(libraryUser5Book,book1);
+
+
+
+
+
+            when(libraryDatabaseMock.listBooksInHandsOf(libraryUser1Book)).thenReturn(resultListOf1Books);
+            when(libraryDatabaseMock.listBooksInHandsOf(libraryUser5Book)).thenReturn(resultListOf5Books);
+
+
 
             //When
-            int result = bookLibrary.listBooksInHandsOf(libraryUser).size();
+            int result = bookLibrary.listBooksInHandsOf(libraryUser1Book).size();
+          //  int result5 = bookLibrary.listBooksInHandsOf(libraryUser5Book).size();
             //Then
             Assertions.assertEquals(1,result);
+           // Assertions.assertEquals(5,result5);
 
         }
         @DisplayName("get list rented by user if he rented 5 books")
@@ -167,6 +188,7 @@ public class BookDirectoryTestSuite {
             bookLibrary.rentABook(libraryUser,book5);
 
             //When
+
             int result = bookLibrary.listBooksInHandsOf(libraryUser).size();
             //Then
             Assertions.assertEquals(5,result);
