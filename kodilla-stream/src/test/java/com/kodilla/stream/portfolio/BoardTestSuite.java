@@ -5,30 +5,34 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import static java.time.temporal.ChronoUnit.DAYS;
 
 import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTestSuite {
-  /*  @Test
+    @Test
     void testAddTaskListAverageWorkingOnTask(){
         //Given
         Board project = prepareTestData();
         //When
         List<TaskList> averageOfDays = new ArrayList<>();
-        List<Task> tasking = new ArrayList<>()
         averageOfDays.add(new TaskList("In progress"));
-        averageOfDays.add(new TaskList("To do"));
-        double daysAverage = project.getTaskLists().stream()
+        double average = project.getTaskLists().stream()
                 .filter(averageOfDays::contains)
                 .flatMap(t -> t.getTasks().stream())
-                .map(Task::getCreated)
-                .filter(d -> d.compareTo(LocalDate.now()) <=0)
-                .co
+                .map(t -> DAYS.between(t.getCreated(),LocalDate.now()))
+                .mapToDouble(t -> t)
+                .average().getAsDouble();
+
+        Assertions.assertEquals(10,average);
 
 
-    }*/
+
+    }
     @Test
     void testAddTaskListFindLongTasks(){
         //Given
