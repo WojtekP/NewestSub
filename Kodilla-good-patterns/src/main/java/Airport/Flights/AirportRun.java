@@ -9,7 +9,7 @@ public class AirportRun {
         MiddleFlightsFinder middleFlightsFinder = new MiddleFlightsFinder();
 
         System.out.println(arrivalFLightsFinder.findArrivalFlight("Berlin"));
-        System.out.println(departureFlightsFinder.findDepartureFlight("Osaka"));
+        System.out.println(departureFlightsFinder.findDepartureFlight("Cracow"));
         System.out.println(middleFlightsFinder.findMiddleAirport("London"));
 
 

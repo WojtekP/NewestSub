@@ -9,9 +9,9 @@ public class FlightList {
 
     public FlightList(){
         directFlights.add(new FlightDirect("Cracow","Berlin"));
-        directFlights.add(new FlightDirect("Hong-Kong","Bilbao"));
-        directFlights.add(new FlightDirect("Malaga","Tokyo"));
-        directFlights.add(new FlightDirect("Osaka","Moscow"));
+        directFlights.add(new FlightDirect("Cracow","Bilbao"));
+        directFlights.add(new FlightDirect("Malaga","Berlin"));
+        directFlights.add(new FlightDirect("Osaka","Berlin"));
         directFlights.add(new FlightDirect("Omsk","Washington"));
         directFlights.add(new FlightDirect("New York","Rome"));
         directFlights.add(new FlightDirect("Lyon","Paris"));
