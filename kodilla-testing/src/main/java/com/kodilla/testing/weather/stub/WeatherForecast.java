@@ -34,10 +34,10 @@ public class WeatherForecast {
             mapValues.add(temperature.getValue());
         }
         Collections.sort(mapValues);
-        if(mapValues.size()%2 == 0){
-           mediane = ((mapValues.get(mapValues.size()) + mapValues.get(mapValues.size() + 1)) / 2);
-        }else {
-           mediane =  mapValues.get(((mapValues.size() + 1) / 2)-1);
+        if (mapValues.size() % 2 == 0) {
+            mediane = ((mapValues.get(mapValues.size()) + mapValues.get(mapValues.size() + 1)) / 2);
+        } else {
+            mediane = mapValues.get(((mapValues.size() + 1) / 2) - 1);
 
         }
 

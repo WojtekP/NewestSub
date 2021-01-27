@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class FileReaderTestSuite {
     @Test
-    void testReadFile(){
+    void testReadFile() {
         //Given
         FileReader fileReader = new FileReader();
         //When
@@ -13,6 +13,7 @@ public class FileReaderTestSuite {
         //Then
         Assertions.assertDoesNotThrow(() -> fileReader.readFile());
     }
+
     @Test
     void whenFileDosentExistsReadFileShouldThrowException() {
         // given
@@ -21,6 +22,7 @@ public class FileReaderTestSuite {
         // when & then
         Assertions.assertThrows(FileReaderException.class, () -> fileReader.readFile(fileName));
     }
+
     @Test
     public void testReadFileWithName() {
         // given

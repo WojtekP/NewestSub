@@ -5,5 +5,5 @@ import food2door.SingleProducer.Company;
 import food2door.SingleProducer.Dishes;
 
 public interface ShopRetriever {
- GetCompanyInfo getCompanyInfo(Company company, Dishes dishes);
+    GetCompanyInfo getCompanyInfo(Company company, Dishes dishes);
 }

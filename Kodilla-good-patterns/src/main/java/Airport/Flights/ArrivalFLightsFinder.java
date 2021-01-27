@@ -8,7 +8,7 @@ public class ArrivalFLightsFinder {
 
     List<FlightDirect> listOfDirectFlights = new ArrayList<>();
 
-    public String findArrivalFlight (String arrivalCity){
+    public String findArrivalFlight(String arrivalCity) {
 
         FlightList flightList = new FlightList();
         listOfDirectFlights = flightList.getDirectFlights().stream()

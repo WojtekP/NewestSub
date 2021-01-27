@@ -18,5 +18,6 @@ public class Triagnle implements Shape {
 
     public double getField() {
 
-    return 0.5*length*heigth;}
+        return 0.5 * length * heigth;
+    }
 }

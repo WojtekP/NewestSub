@@ -47,6 +47,6 @@ public class LibraryUser {
     @Override
     public int hashCode() {
 
-        return Objects.hash(firstName,lastName,peselId);
+        return Objects.hash(firstName, lastName, peselId);
     }
 }

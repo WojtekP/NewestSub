@@ -6,14 +6,17 @@ import java.util.Map;
 public class Cart {
     private User user;
     private Product product;
-    public Cart(User user, Product product){
+
+    public Cart(User user, Product product) {
         this.product = product;
         this.user = user;
     }
-    public User getUser(){
+
+    public User getUser() {
         return user;
     }
-    public Product getProduct(){
+
+    public Product getProduct() {
         return product;
     }
 

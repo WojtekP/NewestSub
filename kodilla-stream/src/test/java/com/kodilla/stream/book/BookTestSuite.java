@@ -11,31 +11,32 @@ import java.util.stream.IntStream;
 public class BookTestSuite {
 
     @Test
-    void testGetListUsingFor(){
+    void testGetListUsingFor() {
         //Given
         BookDirectory bookDirectory = new BookDirectory();
         //When
         List<Book> books = bookDirectory.getList();
         //Then
         int numberOfBooksPublicatedAfter2007 = 0;
-        for(Book book:books){
-            if (book.getYearOfPublication()>2007){
+        for (Book book : books) {
+            if (book.getYearOfPublication() > 2007) {
                 numberOfBooksPublicatedAfter2007++;
             }
         }
-        Assertions.assertEquals(3,numberOfBooksPublicatedAfter2007);
+        Assertions.assertEquals(3, numberOfBooksPublicatedAfter2007);
     }
+
     @Test
-    void testGetListUsinIntStream(){
+    void testGetListUsinIntStream() {
         //Given
         BookDirectory bookDirectory = new BookDirectory();
         //When
         List<Book> books = bookDirectory.getList();
         //then
-        int numberOfBooksPublicatedAfter2007 = IntStream.range(0,books.size())
+        int numberOfBooksPublicatedAfter2007 = IntStream.range(0, books.size())
                 .filter(n -> books.get(n).getYearOfPublication() > 2007)
                 .map(n -> 1)
                 .sum();
-        Assertions.assertEquals(3,numberOfBooksPublicatedAfter2007);
+        Assertions.assertEquals(3, numberOfBooksPublicatedAfter2007);
     }
 }

@@ -5,7 +5,8 @@ import java.util.List;
 
 public class ListOfProducers {
     private List<GetCompanyInfo> producers = new ArrayList<>();
-    public void addProducer(GetCompanyInfo getCompanyInfo){
+
+    public void addProducer(GetCompanyInfo getCompanyInfo) {
         producers.add(getCompanyInfo);
     }
 

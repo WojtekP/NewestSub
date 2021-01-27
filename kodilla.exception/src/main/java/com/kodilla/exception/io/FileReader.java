@@ -18,12 +18,13 @@ public class FileReader {
             fileLines.forEach(System.out::println);
         } catch (IOException e) {
             throw new FileReaderException();
-        }  finally {
+        } finally {
             System.out.println("I am gonna be here... always!");
         }
 
         System.out.println(file.getPath());
     }
+
     public void readFile(final String fileName) throws FileReaderException {
         ClassLoader classLoader = getClass().getClassLoader();
 

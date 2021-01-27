@@ -9,14 +9,14 @@ public class Square implements Shape {
         this.length = length;
     }
 
-    public String getShapeName(){
+    public String getShapeName() {
 
 
         return shapeName;
     }
 
-    public double getField(){
+    public double getField() {
 
-        return length*length;
+        return length * length;
     }
 }

@@ -16,7 +16,7 @@ public class Circle implements Shape {
 
 
     public double getField() {
-        return 3.14*(radius*radius);
+        return 3.14 * (radius * radius);
 
     }
 }

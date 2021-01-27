@@ -53,7 +53,7 @@ public class StatisticsTestSuite {
         public void post100() {
             ForumStatistics forumStatistics = new ForumStatistics(StatisticsMock);
             int postNum = generateListOfPosts(100);
-    //        when(StatisticsMock.postsCount()).thenReturn(postNum);
+            //        when(StatisticsMock.postsCount()).thenReturn(postNum);
             int result = forumStatistics.postsCount();
             Assertions.assertEquals(100, result);
 
@@ -111,7 +111,7 @@ public class StatisticsTestSuite {
             int commentNum = generateListOfComments(2);
             int postNum = generateListOfPosts(10);
 //            when(StatisticsMock.commentsCount()).thenReturn(commentNum);
-   //         when(StatisticsMock.postsCount()).thenReturn(postNum);
+            //         when(StatisticsMock.postsCount()).thenReturn(postNum);
             int resultComments = forumStatistics.commentsCount();
             int resultPosts = forumStatistics.postsCount();
             boolean result = (resultComments < resultPosts);
@@ -125,8 +125,8 @@ public class StatisticsTestSuite {
             ForumStatistics forumStatistics = new ForumStatistics(StatisticsMock);
             int commentNum = generateListOfComments(10);
             int postNum = generateListOfPosts(2);
-  //          when(StatisticsMock.commentsCount()).thenReturn(commentNum);
-   //         when(StatisticsMock.postsCount()).thenReturn(postNum);
+            //          when(StatisticsMock.commentsCount()).thenReturn(commentNum);
+            //         when(StatisticsMock.postsCount()).thenReturn(postNum);
             int resultComments = forumStatistics.commentsCount();
             int resultPosts = forumStatistics.postsCount();
             boolean result = (resultComments < resultPosts);
@@ -134,41 +134,42 @@ public class StatisticsTestSuite {
 
         }
     }
-        @DisplayName("user tests")
-        @Nested
-        class UserTest {
-            private List<String> generateListOfUsers(int quantityOfUsers) {
-                List<String> users = new ArrayList<>();
-                for (int i = 0; i < quantityOfUsers; i++) {
-                    users.add("User No." + i);
-                }
-                return users;
-            }
 
-            @DisplayName("100 user test")
-            @Test
-            public void UserTests100() {
-                ForumStatistics forumStatistics = new ForumStatistics(StatisticsMock);
-                List<String> userList = generateListOfUsers(100);
+    @DisplayName("user tests")
+    @Nested
+    class UserTest {
+        private List<String> generateListOfUsers(int quantityOfUsers) {
+            List<String> users = new ArrayList<>();
+            for (int i = 0; i < quantityOfUsers; i++) {
+                users.add("User No." + i);
+            }
+            return users;
+        }
+
+        @DisplayName("100 user test")
+        @Test
+        public void UserTests100() {
+            ForumStatistics forumStatistics = new ForumStatistics(StatisticsMock);
+            List<String> userList = generateListOfUsers(100);
 //                when(StatisticsMock.usersNames()).thenReturn(userList);
-                int result = forumStatistics.usersNames().size();
-                Assertions.assertEquals(100, result);
+            int result = forumStatistics.usersNames().size();
+            Assertions.assertEquals(100, result);
 
-            }
+        }
 
-            @DisplayName("0 user test")
-            @Test
-            public void UserTests0() {
-                ForumStatistics forumStatistics = new ForumStatistics(StatisticsMock);
-                List<String> userList = generateListOfUsers(0);
-                when(StatisticsMock.usersNames()).thenReturn(userList);
-                int result = forumStatistics.usersNames().size();
-                Assertions.assertEquals(0, result);
-
-            }
+        @DisplayName("0 user test")
+        @Test
+        public void UserTests0() {
+            ForumStatistics forumStatistics = new ForumStatistics(StatisticsMock);
+            List<String> userList = generateListOfUsers(0);
+            when(StatisticsMock.usersNames()).thenReturn(userList);
+            int result = forumStatistics.usersNames().size();
+            Assertions.assertEquals(0, result);
 
         }
 
     }
+
+}
 
 

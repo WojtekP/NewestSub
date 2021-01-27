@@ -10,41 +10,41 @@ public class BookLibrary {
     private LibraryDatabase libraryDatabase;
     private List<LibraryUser> libraryUserList = new ArrayList<>();
     private List<Book> borrowed = new ArrayList<>();
-    private Map<LibraryUser,List<Book>> books = new HashMap<>();
+    private Map<LibraryUser, List<Book>> books = new HashMap<>();
     private List<Book> addedBooks = new ArrayList<>();
     private List<Book> cloneBooks = new ArrayList<>();
 
 
-    public  BookLibrary(LibraryDatabase libraryDatabase){
+    public BookLibrary(LibraryDatabase libraryDatabase) {
         this.libraryDatabase = libraryDatabase;
     }
 
-    public List<Book> listBooksWithCondition(String titleFragment){
+    public List<Book> listBooksWithCondition(String titleFragment) {
         List<Book> bookList = new ArrayList<>();
-        if(titleFragment.length()<3) return bookList;
+        if (titleFragment.length() < 3) return bookList;
         List<Book> resultList = libraryDatabase.listBooksWithCondition(titleFragment);
-        if(resultList.size() > 20) return bookList;
+        if (resultList.size() > 20) return bookList;
         bookList = resultList;
         return bookList;
     }
-    public List<Book> listBooksInHandsOf(LibraryUser libraryUser){
+
+    public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
 
         List<Book> answer = books.get(libraryUser);
         List<Book> emptyList = new ArrayList<>();
-        if(answer == null){
+        if (answer == null) {
             answer = emptyList;
         }
         return answer;
 
 
     }
-    public void addBookToOrder(Book book){
+
+    public void addBookToOrder(Book book) {
         addedBooks.add(book);
     }
-    boolean rentABook(LibraryUser libraryUser, Book book){
 
-
-
+    boolean rentABook(LibraryUser libraryUser, Book book) {
 
 
         return true;

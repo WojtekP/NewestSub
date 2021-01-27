@@ -5,31 +5,35 @@ import org.junit.jupiter.api.*;
 
 class ForumTestSuite {
     @BeforeEach
-    public void before(){
+    public void before() {
         System.out.println("unit tests begin");
     }
+
     @BeforeAll
-    public static void beforeAll(){
+    public static void beforeAll() {
         System.out.println("Test Suite begin");
     }
+
     @AfterAll
-    public static void afterAll(){
+    public static void afterAll() {
         System.out.println("Tests finished");
     }
+
     @AfterEach
-    public void afterEach(){
+    public void afterEach() {
         System.out.println("test finished");
     }
+
     @DisplayName("the test is checking if real name is created correct")
     @Test
-    void testCaseRealName(){
+    void testCaseRealName() {
         //Given
-        SimpleUser simpleUser = new SimpleUser("the forum user","John Smith");
+        SimpleUser simpleUser = new SimpleUser("the forum user", "John Smith");
         //When
         String answerExpectations = simpleUser.getRealName();
         System.out.println("Testing " + answerExpectations);
         //Then
-        Assertions.assertEquals(answerExpectations,"John Smith");
+        Assertions.assertEquals(answerExpectations, "John Smith");
 
     }
 
@@ -41,7 +45,6 @@ class ForumTestSuite {
         String expectedResult = "theForumUser";
         //When
         String result = simpleUser.getUsername();
-
 
 
         //Then

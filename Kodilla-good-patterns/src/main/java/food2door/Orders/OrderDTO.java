@@ -10,7 +10,8 @@ public class OrderDTO {
         this.company = company;
         this.ordered = ordered;
     }
-    public Company getCompany(){
+
+    public Company getCompany() {
         return company;
     }
 }

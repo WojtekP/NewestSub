@@ -2,7 +2,7 @@ package com.kodilla.stream.sand;
 
 import java.math.BigDecimal;
 
-public class Europe implements SandStorage{
+public class Europe implements SandStorage {
 
     @Override
     public BigDecimal getSandBeandsQuantity() {

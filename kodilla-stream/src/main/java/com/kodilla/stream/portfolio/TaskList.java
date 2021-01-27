@@ -15,9 +15,11 @@ public final class TaskList {
     public void addTask(Task task) {
         tasks.add(task);
     }
-    public boolean removeTask(Task task){
-       return tasks.remove(task);
+
+    public boolean removeTask(Task task) {
+        return tasks.remove(task);
     }
+
     public List<Task> getTasks() {
         return new LinkedList<Task>(tasks);
     }
@@ -25,6 +27,7 @@ public final class TaskList {
     public String getName() {
         return name;
     }
+
     @Override
     public String toString() {
         return "TaskList{" +

@@ -4,6 +4,7 @@ import com.kodilla.testing.forum.ForumComment;
 import com.kodilla.testing.forum.ForumPost;
 import com.kodilla.testing.forum.ForumUser;
 import org.junit.jupiter.api.*;
+
 @DisplayName("TDD: Forum Test Suite ")
 public class ForumTestSuite {
     private static int testCounter = 0;

@@ -5,7 +5,7 @@ public class FlightIndirect {
     private String departure;
     private String middle;
 
-    public FlightIndirect(String departure,String arrival , String middle) {
+    public FlightIndirect(String departure, String arrival, String middle) {
         this.arrival = arrival;
         this.departure = departure;
         this.middle = middle;

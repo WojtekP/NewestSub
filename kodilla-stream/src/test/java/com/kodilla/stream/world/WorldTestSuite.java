@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 public class WorldTestSuite {
     @DisplayName("get People Over World Quantity Test")
     @Test
-    void getPeopleOverWorldQuantity(){
+    void getPeopleOverWorldQuantity() {
         //Given
         Country germany = new Country(new BigDecimal("200000000000000"));
         Country poland = new Country(new BigDecimal("100000000000000"));
@@ -42,6 +42,6 @@ public class WorldTestSuite {
         BigDecimal sumOfAllPeople = world.getPeopleQuantity();
         BigDecimal expectedPeople = new BigDecimal("3900000000000000");
         //Then
-        Assertions.assertEquals(expectedPeople,sumOfAllPeople);
+        Assertions.assertEquals(expectedPeople, sumOfAllPeople);
     }
 }

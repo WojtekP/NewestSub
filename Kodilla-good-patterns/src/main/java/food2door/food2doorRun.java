@@ -24,8 +24,8 @@ public class food2doorRun {
         OrderGetRequest orderGetRequest = new OrderGetRequest();
         OrderRequest orderRequest = orderGetRequest.orderGetRequest();
 
-        OrderProcessor orderProcessor = new OrderProcessor(new NotificationService(),new OrderService(),new ShopService());
-        orderProcessor.process(orderRequest,getCompanyInfoExotic);
+        OrderProcessor orderProcessor = new OrderProcessor(new NotificationService(), new OrderService(), new ShopService());
+        orderProcessor.process(orderRequest, getCompanyInfoExotic);
 
 
     }

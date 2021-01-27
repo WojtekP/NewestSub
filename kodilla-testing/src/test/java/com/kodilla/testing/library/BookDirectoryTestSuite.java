@@ -20,16 +20,18 @@ public class BookDirectoryTestSuite {
     static int counter = 0;
 
     @BeforeEach
-    public void beforeEach(){
+    public void beforeEach() {
         counter++;
         System.out.println("Starting test No." + counter);
     }
+
     @BeforeAll
-    public static void beforeAll(){
+    public static void beforeAll() {
         System.out.println("starting tests");
     }
+
     @AfterAll
-    public static void afterAll(){
+    public static void afterAll() {
         System.out.println("Tests finished");
     }
 
@@ -54,20 +56,22 @@ public class BookDirectoryTestSuite {
             //When
             List<Book> theListOfBook = bookLibrary.listBooksWithCondition("Secret");
             //Then
-            Assertions.assertEquals(4,theListOfBook.size());
+            Assertions.assertEquals(4, theListOfBook.size());
         }
     }
+
     @DisplayName("Test of returning empty list")
     @Nested
     class emptyListTest {
-        private List<Book> generateListOfBooks(int quantityOfBooks){
+        private List<Book> generateListOfBooks(int quantityOfBooks) {
             List<Book> resultList = new ArrayList<>();
-            for(int i = 1; i<=quantityOfBooks;i++){
+            for (int i = 1; i <= quantityOfBooks; i++) {
                 Book theBook = new Book("Title " + i, "Author " + i, 1970 + i);
                 resultList.add(theBook);
             }
             return resultList;
         }
+
         @DisplayName("Empty List return if more than 20 characters test")
         @Test
         void testListBooksWithConditionMoreThan20() {
@@ -85,9 +89,9 @@ public class BookDirectoryTestSuite {
             List<Book> theListOf16Books = bookLibrary.listBooksWithCondition("asojifi");
             List<Book> theListOf50Books = bookLibrary.listBooksWithCondition("fiftyBooks");
             //Then
-            Assertions.assertEquals(0,theListOf0Books.size());
-            Assertions.assertEquals(16,theListOf16Books.size());
-            Assertions.assertEquals(0,theListOf50Books.size());
+            Assertions.assertEquals(0, theListOf0Books.size());
+            Assertions.assertEquals(16, theListOf16Books.size());
+            Assertions.assertEquals(0, theListOf50Books.size());
 
         }
 
@@ -100,27 +104,29 @@ public class BookDirectoryTestSuite {
             //When
             List<Book> theListOfBooks10 = bookLibrary.listBooksWithCondition("ss");
             //Then
-            Assertions.assertEquals(0,theListOfBooks10.size());
+            Assertions.assertEquals(0, theListOfBooks10.size());
             verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
         }
     }
+
     @DisplayName("Books in hands of user test")
     @Nested
-    class bookInHandsOff{
+    class bookInHandsOff {
         @DisplayName("get list rented by user if he rented 0 books")
         @Test
-        void test0BooksRented(){
+        void test0BooksRented() {
             //Given
             BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
             LibraryUser libraryUser = new LibraryUser();
             //When
             int result = bookLibrary.listBooksInHandsOf(libraryUser).size();
             //Then
-            Assertions.assertEquals(0,result);
+            Assertions.assertEquals(0, result);
         }
+
         @DisplayName("get list rented by user if he rented 1 book")
         @Test
-        void  test1BookRented(){
+        void test1BookRented() {
             //Given
             BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
             LibraryUser libraryUser1Book = new LibraryUser();
@@ -139,34 +145,31 @@ public class BookDirectoryTestSuite {
             resultListOf5Books.add(book4);
             resultListOf5Books.add(book5);
             bookLibrary.addBookToOrder(book1);
-            bookLibrary.rentABook(libraryUser1Book,book1);
+            bookLibrary.rentABook(libraryUser1Book, book1);
             bookLibrary.addBookToOrder(book1);
             bookLibrary.addBookToOrder(book2);
             bookLibrary.addBookToOrder(book3);
             bookLibrary.addBookToOrder(book4);
             bookLibrary.addBookToOrder(book5);
-            bookLibrary.rentABook(libraryUser5Book,book1);
-
-
-
+            bookLibrary.rentABook(libraryUser5Book, book1);
 
 
             when(libraryDatabaseMock.listBooksInHandsOf(libraryUser1Book)).thenReturn(resultListOf1Books);
             when(libraryDatabaseMock.listBooksInHandsOf(libraryUser5Book)).thenReturn(resultListOf5Books);
 
 
-
             //When
             int result = bookLibrary.listBooksInHandsOf(libraryUser1Book).size();
-          //  int result5 = bookLibrary.listBooksInHandsOf(libraryUser5Book).size();
+            //  int result5 = bookLibrary.listBooksInHandsOf(libraryUser5Book).size();
             //Then
-            Assertions.assertEquals(1,result);
-           // Assertions.assertEquals(5,result5);
+            Assertions.assertEquals(1, result);
+            // Assertions.assertEquals(5,result5);
 
         }
+
         @DisplayName("get list rented by user if he rented 5 books")
         @Test
-        void test5BookRented(){
+        void test5BookRented() {
             //Given
             BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
             LibraryUser libraryUser = new LibraryUser();
@@ -181,17 +184,17 @@ public class BookDirectoryTestSuite {
             resultListOfBooks.add(book3);
             resultListOfBooks.add(book4);
             resultListOfBooks.add(book5);
-            bookLibrary.rentABook(libraryUser,book1);
-            bookLibrary.rentABook(libraryUser,book2);
-            bookLibrary.rentABook(libraryUser,book3);
-            bookLibrary.rentABook(libraryUser,book4);
-            bookLibrary.rentABook(libraryUser,book5);
+            bookLibrary.rentABook(libraryUser, book1);
+            bookLibrary.rentABook(libraryUser, book2);
+            bookLibrary.rentABook(libraryUser, book3);
+            bookLibrary.rentABook(libraryUser, book4);
+            bookLibrary.rentABook(libraryUser, book5);
 
             //When
 
             int result = bookLibrary.listBooksInHandsOf(libraryUser).size();
             //Then
-            Assertions.assertEquals(5,result);
+            Assertions.assertEquals(5, result);
 
         }
     }

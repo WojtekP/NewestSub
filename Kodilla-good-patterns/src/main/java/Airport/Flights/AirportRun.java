@@ -1,7 +1,7 @@
 package Airport.Flights;
 
 public class AirportRun {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
 
         ArrivalFLightsFinder arrivalFLightsFinder = new ArrivalFLightsFinder();
