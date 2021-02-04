@@ -16,6 +16,13 @@ public class TaskListDaoTestSuite {
     private TaskListDao taskListDao;
     private static final String TASKLISTNAME = "DONE";
     @Test
+    void testTest(){
+        int a = 1;
+        int b = 2;
+        int c = a + b;
+        Assertions.assertEquals(3,c);
+    }
+    @Test
     void testTaskListDaoSave() {
         //Given
         TaskList taskList = new TaskList(TASKLISTNAME, "yay");
