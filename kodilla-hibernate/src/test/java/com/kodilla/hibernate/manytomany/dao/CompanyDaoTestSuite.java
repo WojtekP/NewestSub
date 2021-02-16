@@ -139,7 +139,7 @@ class CompanyDaoTestSuite {
         companyDao.save(javax);
         companyDao.save(javageeks);
 
-        List<Company> results = companyDao.getCompanyByNameLike("Jav%");
+        List<Company> results = companyDao.getCompanyByNameLike("Java");
 
         System.out.println("COMPANIES" + results);
 
@@ -148,13 +148,14 @@ class CompanyDaoTestSuite {
         int stephanieId = stephanieClarckson.getId();
 
         //Then
-        Assertions.assertEquals(5, results.size());
+        Assertions.assertEquals(4, results.size());
 
         //CleanUp
         try {
-            employeeDao.deleteById(johnId);
+            companyDao.deleteAll();
+           /* employeeDao.deleteById(johnId);
             employeeDao.deleteById(martinId);
-            employeeDao.deleteById(stephanieId);
+            employeeDao.deleteById(stephanieId);*/
         } catch (Exception e) {
 //            do nothing
         }
