@@ -2,9 +2,9 @@ package com.kodilla.testing.forum.statistics;
 
 import java.util.ArrayList;
 import java.util.List;
-
-public class ForumStatistics implements Statistics {
-    private Statistics statistics;
+public class ForumStatistics{
+/*public class ForumStatistics implements Statistics {
+      private Statistics statistics;
     List<String> userNamesList = new ArrayList<>();
     int postAmount;
     int commentsAmount;
@@ -55,5 +55,5 @@ public class ForumStatistics implements Statistics {
                 + commentsAmount + "\n average Post number per user:" + averagePostPerUser + "\n average comment per user:"
                 + "\n average comments per post" + averageCommentsPerPost);
     }
-
+*/
 }
