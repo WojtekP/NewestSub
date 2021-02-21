@@ -101,7 +101,8 @@ class CompanyDaoTestSuite {
 
         //CleanUp
         try {
-            companyDao.deleteById(companyId);
+
+            employeeDao.deleteAll();
         } catch (Exception e) {
             //do nothing
         }
@@ -139,12 +140,12 @@ class CompanyDaoTestSuite {
         companyDao.save(javax);
         companyDao.save(javageeks);
 
-        List<Company> results = companyDao.getCompanyByNameLike("Java");
+        List<Company> results = companyDao.getCompanyByNameLike("java");
 
         System.out.println("COMPANIES" + results);
 
         int johnId = johnSmith.getId();
-        int martinId = martinSmith.getId();
+        int sqlExpertsId = sqlExperts.getId();
         int stephanieId = stephanieClarckson.getId();
 
         //Then
@@ -153,9 +154,8 @@ class CompanyDaoTestSuite {
         //CleanUp
         try {
             companyDao.deleteAll();
-           /* employeeDao.deleteById(johnId);
-            employeeDao.deleteById(martinId);
-            employeeDao.deleteById(stephanieId);*/
+            //companyDao.deleteById(sqlExpertsId);
+
         } catch (Exception e) {
 //            do nothing
         }
