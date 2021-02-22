@@ -117,7 +117,7 @@ class CompanyDaoTestSuite {
         int javaxId = javax.getId();
         companyDao.save(javageeks);
         int javageeksId = javageeks.getId();
-        List<Company> resultCompanies = companyDao.getCompanyByNameLike("Java");
+        List<Company> resultCompanies = companyDao.retrieveCompanyByFirstThreeLetters("Jav");
 
         //Then
         Assertions.assertEquals(4, resultCompanies.size());

@@ -20,7 +20,7 @@ public final class CompanyFacade {
     public static final Logger LOGGER = LoggerFactory.getLogger(CompanyFacade.class);
 
     public List<Company> companyFinder() throws CompanyFinderException {
-        List<Company> companies = companyDao.getCompanyByNameLike("%Jav%");
+        List<Company> companies = companyDao.retrieveCompanyByFirstThreeLetters("%Jav%");
         LOGGER.info("Companies: " + companies);
         if (companies.isEmpty()) {
             LOGGER.error(CompanyFinderException.ERR_COMPANY_NOT_FOUND);
