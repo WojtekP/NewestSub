@@ -72,32 +72,23 @@ class CompanyDaoTestSuite {
         Employee martinSmith = new Employee("Martin", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
         Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
-        Company company = new Company("SQL experts");
 
-        johnSmith.getCompanies().add(company);
-        martinSmith.getCompanies().add(company);
-        stephanieClarckson.getCompanies().add(company);
-        lindaKovalsky.getCompanies().add(company);
-        company.getEmployees().add(johnSmith);
-        company.getEmployees().add(martinSmith);
-        company.getEmployees().add(stephanieClarckson);
-        company.getEmployees().add(lindaKovalsky);
+
+
 
         //When
         employeeDao.save(johnSmith);
-        employeeDao.save(martinSmith);
+        int johnSmithId = johnSmith.getId();
         employeeDao.save(stephanieClarckson);
+        int stephanieClarcksonId = stephanieClarckson.getId();
         employeeDao.save(lindaKovalsky);
-        List<Employee> smithDao = employeeDao.findEmployeeByLastname("Smith");
-
-        List<Employee> smithList = new ArrayList<>();
-        smithList.add(johnSmith);
-        smithList.add(martinSmith);
-
-        int companyId = company.getId();
+        int lindaKovalskyId = lindaKovalsky.getId();
+        employeeDao.save(martinSmith);
+        int martinSmithId = martinSmith.getId();
+        List<Employee> resultEmployeeList = employeeDao.findEmployeeByLastname("Smith");
 
         //Then
-        Assertions.assertEquals(smithList, smithDao);
+        Assertions.assertEquals(2, resultEmployeeList.size());
 
         //CleanUp
         try {
@@ -107,57 +98,39 @@ class CompanyDaoTestSuite {
             //do nothing
         }
     }
-
     @Test
     public void testNamedQueriesCompanies() {
         //Given
-        Employee johnSmith = new Employee("John", "Smith");
-        Employee martinSmith = new Employee("Martin", "Smith");
-        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
-
         Company sqlExperts = new Company("SQL experts");
         Company javaExperts = new Company("Java experts");
         Company javaMasters = new Company("Java masters");
         Company javax = new Company("Javax");
         Company javageeks = new Company("Java Geeks");
-
-        sqlExperts.getEmployees().add(johnSmith);
-        javaExperts.getEmployees().add(johnSmith);
-        javaMasters.getEmployees().add(martinSmith);
-        javax.getEmployees().add(stephanieClarckson);
-        javageeks.getEmployees().add(martinSmith);
-
-        johnSmith.getCompanies().add(sqlExperts);
-        johnSmith.getCompanies().add(javaExperts);
-        martinSmith.getCompanies().add(javaMasters);
-        martinSmith.getCompanies().add(javageeks);
-        stephanieClarckson.getCompanies().add(javax);
-
         //When
         companyDao.save(sqlExperts);
-        companyDao.save(javaExperts);
-        companyDao.save(javaMasters);
-        companyDao.save(javax);
-        companyDao.save(javageeks);
-
-        List<Company> results = companyDao.getCompanyByNameLike("java");
-
-        System.out.println("COMPANIES" + results);
-
-        int johnId = johnSmith.getId();
         int sqlExpertsId = sqlExperts.getId();
-        int stephanieId = stephanieClarckson.getId();
+        companyDao.save(javaExperts);
+        int javaExpertsId = javaExperts.getId();
+        companyDao.save(javaMasters);
+        int javaMastersId = javaMasters.getId();
+        companyDao.save(javax);
+        int javaxId = javax.getId();
+        companyDao.save(javageeks);
+        int javageeksId = javageeks.getId();
+        List<Company> resultCompanies = companyDao.getCompanyByNameLike("Java");
 
         //Then
-        Assertions.assertEquals(4, results.size());
+        Assertions.assertEquals(4, resultCompanies.size());
 
         //CleanUp
         try {
-            companyDao.deleteAll();
-            //companyDao.deleteById(sqlExpertsId);
-
-        } catch (Exception e) {
-//            do nothing
+            companyDao.deleteById(sqlExpertsId);
+            companyDao.deleteById(javaExpertsId);
+            companyDao.deleteById(javaMastersId);
+            companyDao.deleteById(javaxId);
+            companyDao.deleteById(javageeksId);
+        } catch (Exception e){
+            //Do nothing
+        }
         }
     }
-}

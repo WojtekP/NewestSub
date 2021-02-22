@@ -8,16 +8,20 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.math.BigDecimal;
-
+@Transactional
 @SpringBootTest
 public class InvoiceDaoTestSuite {
 
     @Autowired
     private InvoiceDao invoiceDao;
+    @Autowired
+    private ItemDao itemDao;
+    @Autowired
+    private ProductDao productDao;
 
     @Test
     void testInvoiceDaoSave() {
@@ -34,16 +38,34 @@ public class InvoiceDaoTestSuite {
         invoice1.getItems().add(position2);
         invoice2.getItems().add(position2);
         invoice2.getItems().add(position3);
-        int inId = invoice1.getId();
-        int inId2 = invoice2.getId();
+
         //When
+        productDao.save(product1);
+        productDao.save(product2);
+        productDao.save(product3);
+        itemDao.save(position1);
+        itemDao.save(position2);
+        itemDao.save(position3);
         invoiceDao.save(invoice1);
         invoiceDao.save(invoice2);
+        int inId = invoice1.getId();
+        int inId2 = invoice2.getId();
         //Then
         Assertions.assertNotEquals(0,inId);
         Assertions.assertNotEquals(0,inId2);
         //Cleanup
-        invoiceDao.deleteById(inId);
-        invoiceDao.deleteById(inId2);
+        try {
+            productDao.delete(product1);
+            productDao.delete(product2);
+            productDao.delete(product3);
+            itemDao.delete(position1);
+            itemDao.delete(position2);
+            itemDao.delete(position3);
+            invoiceDao.deleteById(inId);
+            invoiceDao.deleteById(inId2);
+
+        } catch (Exception e) {
+            //do nothing
+        }
     }
 }
